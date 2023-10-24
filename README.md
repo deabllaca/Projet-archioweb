@@ -4,8 +4,8 @@ Le but de notre API consiste à développer une application mobile qui répertor
 
 L’utilisateur qui souhaite louer une place va rechercher des places disponibles selon la date, l’heure et la localisation qu’il souhaite et pourra la réserver pour x temps.
 
-```markdown
 ### Structure
+```markdown
 Users: 
   - firstName
   - lastName
@@ -14,11 +14,10 @@ Users:
   
 Place de parc:
   - description
-	- type 
+  - type 
   - geolocation
   - picture
-	- date de disponbilité  
-	- heure de disponiblité 
+  - date de disponibilité (jour, mois, année, heure, minute)
 
 Véhicule :
 - type 
