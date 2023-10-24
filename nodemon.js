@@ -1,5 +1,5 @@
 {
-    "watch": [
+    "watch"; [
       "app.js",
       "bin/start.js",
       "routes/**/*"

@@ -1,8 +1,8 @@
-const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
+import mongoose, { Schema, model } from "mongoose";
+import bcrypt from "bcrypt";
 
 // create userSchema
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
   id: {
     type: mongoose.ObjectId,
   },
@@ -55,4 +55,7 @@ userSchema.pre("save", function (next) {
     next();
   });
 }); // Exportation du modèle User pour l'utiliser ailleurs dans l'application
-const User = mongoose.model("User", userSchema);
+// const User = mongoose.model("User", userSchema);
+
+export const User = model('User', userSchema);
+
