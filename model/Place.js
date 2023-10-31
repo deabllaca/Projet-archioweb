@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose, { Schema, model } from "mongoose";
 
 // Fonctions pour valider la géolocalisation
 function validateGeoJsonCoordinates(value) {
@@ -60,5 +60,7 @@ const placeSchema = new mongoose.Schema({
 });
 
 // Exportation du modèle Place pour l'utiliser ailleurs dans l'application
-const Place = mongoose.model("Place", placeSchema);
-module.exports = Place;
+// const Place = mongoose.model("Place", placeSchema);
+// module.exports = Place;
+
+export const Place = model('Place', placeSchema);
