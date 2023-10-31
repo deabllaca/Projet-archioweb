@@ -37,13 +37,13 @@ router.post('/login', async (req, res) => {
   const user = await User.findOne({ userName });
 
   if (!user) {
-    return res.status(401).json({ error: 'Nom d\'utilisateur ou mot de passe incorrect' });
+    return res.status(401).json({ error: 'Nom dutilisateur ou mot de passe incorrect' });
   }
 
   const isPasswordValid = await bcrypt.compare(password, user.password);
 
   if (!isPasswordValid) {
-    return res.status(401).json({ error: 'Nom d\'utilisateur ou mot de passe incorrect' });
+    return res.status(401).json({ error: 'Nom dutilisateur ou mot de passe incorrect' });
   }
 
   const token = jwt.sign({ userId: user._id }, config.secret, { expiresIn: config.expiresIn });
