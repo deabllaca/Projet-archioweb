@@ -1,7 +1,8 @@
-const mongoose = require("mongoose");
+import mongoose, { Schema, model } from "mongoose";
+import bcrypt from "bcrypt";
 
 // Définition du schéma Véhicule
-const vehicleSchema = new mongoose.Schema({
+const vehiculeSchema = new mongoose.Schema({
   type: {
     type: String,
     required: true,
@@ -29,4 +30,4 @@ const vehicleSchema = new mongoose.Schema({
 });
 
 // Exportation du modèle Véhicule pour l'utiliser ailleurs dans l'application
-const Vehicle = mongoose.model("Vehicle", vehicleSchema);
+export const Vehicule = model('Vehicule', vehiculeSchema);

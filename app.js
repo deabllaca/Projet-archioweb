@@ -19,7 +19,7 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use("/", indexRouter); //
+app.use("/", indexRouter); 
 app.use("/users", usersRouter);
 app.use("/places", placesRouter);
 
@@ -40,5 +40,6 @@ app.use(function (err, req, res, next) {
 });
 
 export default app;
+
 
 
