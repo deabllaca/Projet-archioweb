@@ -47,3 +47,6 @@ Véhicule :
 
 1. L’utilisateur est notifié quand lorsqu’il y a un nouvelle réservation sur sa place.
 2. L’utiliseur est notifé 30 min avant la fin de la réservation de parking (pour qu’il se souvienne qu’il doit partir).
+
+
+Dea, Andy, Lara
