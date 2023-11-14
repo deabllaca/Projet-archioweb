@@ -32,8 +32,28 @@ router.post("/signup", async (req, res) => {
   }
 });
 
+router.post("/inscription", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const user = new User({
+      email,
+      password: hashedPassword,
+    });
+
+    await user.save();
+
+    res.status(201).json({ message: "Utilisateur enregistré avec succès" });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "Erreur lors de lenregistrement de lutilisateur" });
+  }
+});
+
 // Route pour l'authentification d'un utilisateur
-router.post("/login", async (req, res) => {
+router.post("/connect", async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
     if (!user) {
