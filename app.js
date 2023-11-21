@@ -3,11 +3,22 @@ import createError from "http-errors";
 import logger from "morgan";
 import indexRouter from "./routes/index.js";
 import usersRouter from "./routes/users.js";
-import placesRouter from "./routes/places.js";
 import mongoose from "mongoose";
-mongoose.connect(process.env.DATABASE_URL || "mongodb://127.0.0.1:27017/ParkingLocationApp");
+import fs from "fs";
+import yaml from "js-yaml";
+import swaggerUi from "swagger-ui-express";
+import cors from "cors";
+mongoose.connect(
+  process.env.DATABASE_URL || "mongodb://127.0.0.1:27017/ParkingLocationApp"
+);
 
 const app = express();
+app.use(cors());
+
+// Parse the OpenAPI document.
+const openApiDocument = yaml.load(fs.readFileSync("./openapi.yml"));
+// Serve the Swagger UI documentation.
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openApiDocument));
 
 // app.use(function myMiddleware(req, res, next) {
 //   console.log("Hello World!");
@@ -19,9 +30,8 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use("/", indexRouter); 
+app.use("/", indexRouter); // indexRouter est le routeur pour la racine de l'API (localhost:3000/) np
 app.use("/users", usersRouter);
-app.use("/places", placesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -40,6 +50,3 @@ app.use(function (err, req, res, next) {
 });
 
 export default app;
-
-
-
